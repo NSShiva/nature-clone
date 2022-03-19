@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    
+
     'crispy_forms',
 
     'main',
@@ -170,3 +170,5 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'alimardan_akhmedov@hotmail.com'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
