@@ -17,7 +17,7 @@ from .forms import UserRegisterForm, ActivationForm, LoginForm
 from .models import Subscriber
 from .tokens import account_activation_token
 
-# sendgrid mail
+
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
@@ -39,7 +39,7 @@ def register(request):
             else:
                 user = form.save(commit=False)
                 user.is_active = False
-                user.save()   
+                user.save()
 
                 current_site = get_current_site(request)
                 mail_subject = 'Activate your account.'
@@ -77,7 +77,7 @@ def register(request):
 
     context = {
         'form': form,
-    }    
+    }
 
     return render(request, 'user/register.html', context)
 
@@ -160,11 +160,11 @@ def send_activation_mail(request):
                 except Exception as e:
                     print(e.message)
 
-                return redirect(reverse('alert'))    
+                return redirect(reverse('alert'))
 
             except ObjectDoesNotExist:
-                messages.warning(request, 'You entered a invalid email. Please try again with your registered email!')    
-    
+                messages.warning(request, 'You entered a invalid email. Please try again with your registered email!')
+
     return redirect(reverse('home'))
 
 
